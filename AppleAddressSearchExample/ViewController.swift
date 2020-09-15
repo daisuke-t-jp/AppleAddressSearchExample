@@ -58,6 +58,12 @@ class ViewController: UIViewController {
         initLocationManager()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        searchBar?.becomeFirstResponder()
+    }
+    
 }
 
 
@@ -173,11 +179,17 @@ extension ViewController: UITableViewDelegate {
 extension ViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        search(searchText: searchText)
+        guard searchText.isEmpty else {
+            return
+        }
+        
+        search(searchText: "")
     }
     
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        search(searchText: "")
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        
+        search(searchText: searchBar.text ?? "")
     }
     
 }
