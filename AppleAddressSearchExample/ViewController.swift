@@ -165,16 +165,6 @@ extension ViewController: UITableViewDataSource {
 }
 
 
-// MARK: - UITableViewDelegate
-extension ViewController: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44.0
-    }
-    
-}
-
-
 // MARK: - UISearchBarDelegate
 extension ViewController: UISearchBarDelegate {
     
